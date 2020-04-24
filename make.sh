@@ -47,7 +47,9 @@ mkdir -p $INSTALL_PATH
 # 	--disable-nhrpd
 
 export CC=arm-none-linux-gnueabi-gcc
+export LDFLAGS=-static
 export LIBS="-lreadline -L/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/target/usr/lib/arm-linux-gnueabi -ltinfo -L/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/target/lib/arm-linux-gnueabi"
+# export LDFLAGS="--rpath-link=/lib/arm-linux-gnueabi"
 
 echo $CC
 echo $LIBS
@@ -64,6 +66,6 @@ CC=arm-none-linux-gnueabi-gcc ./configure \
 	--disable-ospf6d \
 	--disable-isisd
 
-# make clean
+make clean
 make
-# make install
+make install
