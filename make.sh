@@ -64,7 +64,8 @@ CC=arm-none-linux-gnueabi-gcc ./configure \
 	--disable-nhrpd \
 	--disable-ripngd \
 	--disable-ospf6d \
-	--disable-isisd
+	--disable-isisd \
+	--enable-snmp=agentx
 
 make clean
 make
