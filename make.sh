@@ -21,30 +21,30 @@ echo $INSTALL_PATH
 
 mkdir -p $INSTALL_PATH
 
-## x86
-# ./configure
-# ./configure --prefix=/prefix \
-# 	--localstatedir=/localstatedir \
-# 	--sysconfdir=/conf 
+######## x86 ########
+## 1. sudo adduser quagga ; sudo addgroup quagga
+## 2. sudo mkdir /opt/quagga; sudo chown -R quagga /opt/quagga ; chmod -R 777 /opt/quagga
+## 3. 
+# ./configure --prefix=/opt/quagga \
+# 	--localstatedir=/opt/quagga \
+# 	--sysconfdir=/opt/quagga
+# make clean
+# make
+# make install
+## 4. cd /opt/quagga 
+## 5. Launch daemons
+# sudo ./sbin/zebra -f zebra.conf.sample &
+# sudo ./sbin/ripd -f ripd.conf.sample &
+# sudo ./sbin/ospfd -f ospfd.conf.sample &
+# sudo ./sbin/pimd -f pimd.conf.sample &
+## 6. Launch vtysh or telnet to zebra routing suite services
+# sudo ./bin/vtysh
+# telnet localhost zebra (ripd/ospfd/etc.)
+#####################
 
-## arm
+######## arm ########
 ## Ref: https://danny270degree.blogspot.com/2013/11/quagga-how-to-compile-and-install.html
-# CC=arm-none-linux-gnueabi-gcc ./configure --host=arm-none-linux-gnueabi --prefix=/home/oscartu/SRC/quagga/quagga_install --localstatedir=/home/oscartu/SRC/quagga/quagga_install sysconfdir=/home/oscartu/SRC/quagga/quagga_install 
-# CC=arm-none-linux-gnueabi-gcc ./configure --host=arm-none-linux-gnueabi \
-# 	--prefix=/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/output/ImageTree \
-# 	--localstatedir=/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/output/ImageTree --sysconfdir=/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/output/ImageTree/conf \
-# 	--disable-vtysh \
-# 	--disable-nhrpd
-
-# CC=arm-none-linux-gnueabi-gcc
-# LDFLAGS="-lreadline -L/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/target/usr/lib/arm-linux-gnueabi -L/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/target/lib/arm-linux-gnueabi" \
-# ./configure \
-# 	--host=arm-none-linux-gnueabi \
-# 	--with-cflags=-I/home/oscartu/ONE_1.1/SRC/bmc_0.01/workspace/Build/target/usr/include \
-# 	--prefix=$INSTALL_PATH \
-# 	--localstatedir=/var/tmp \
-# 	--sysconfdir=/conf \
-# 	--disable-nhrpd
+## Ref: http://140.120.7.21/Quagga/README.html
 
 export CC=arm-none-linux-gnueabi-gcc
 export LDFLAGS=-static

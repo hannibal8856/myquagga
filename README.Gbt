@@ -1,0 +1,15 @@
+Gigabyte GbtNOS prototype
+
+[Cross compile]
+1. source env.sh
+	format: source <path_to_env.sh> <path_to_project_root> <project_name>
+	ex: source ~/ONE_1.1/SRC/env.sh ~/ONE_1.1/SRC bmc_0.01
+
+2. ./make.sh
+3. cd quagga_arm
+4. ./install_to_BMC.sh <path_to_ImagrTree>
+	ex: ./install_to_BMC.sh ~/ONE_1.1/SRC/bmc_0.01/workspace/Build/output/ImageTree/
+5. Goto project root, execute "make PROJECT=<project_name>" & update BMC image
+
+[Launch quagga]
+/etc/init.d/start-quagga.sh
