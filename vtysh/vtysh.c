@@ -2407,7 +2407,7 @@ DEFUN (vtysh_ssh,
   return CMD_SUCCESS;
 }
 
-DEFUN (vtysh_start_shell,
+DEFUN_HIDDEN (vtysh_start_shell,
        vtysh_start_shell_cmd,
        "start-shell",
        "Start UNIX shell\n")
@@ -2416,7 +2416,7 @@ DEFUN (vtysh_start_shell,
   return CMD_SUCCESS;
 }
 
-DEFUN (vtysh_start_bash,
+DEFUN_HIDDEN (vtysh_start_bash,
        vtysh_start_bash_cmd,
        "start-shell bash",
        "Start UNIX shell\n"
@@ -2426,7 +2426,7 @@ DEFUN (vtysh_start_bash,
   return CMD_SUCCESS;
 }
 
-DEFUN (vtysh_start_zsh,
+DEFUN_HIDDEN (vtysh_start_zsh,
        vtysh_start_zsh_cmd,
        "start-shell zsh",
        "Start UNIX shell\n"
@@ -2825,8 +2825,8 @@ vtysh_init_vty (void)
   install_element (ENABLE_NODE, &vtysh_telnet_port_cmd);
   install_element (ENABLE_NODE, &vtysh_ssh_cmd);
   install_element (ENABLE_NODE, &vtysh_start_shell_cmd);
-  install_element (ENABLE_NODE, &vtysh_start_bash_cmd);
-  install_element (ENABLE_NODE, &vtysh_start_zsh_cmd);
+//  install_element (ENABLE_NODE, &vtysh_start_bash_cmd);
+//  install_element (ENABLE_NODE, &vtysh_start_zsh_cmd);
   
   install_element (VIEW_NODE, &vtysh_show_memory_cmd);
   install_element (ENABLE_NODE, &vtysh_show_memory_cmd);
