@@ -2370,6 +2370,22 @@ vty_show_ip_route (struct vty *vty, struct route_node *rn, struct rib *rib)
     }
 }
 
+#define SHOW_TEST_STR \
+  "TEST: This is a test CLI%s" \
+  "       For practice how to add a CLI command%s", \
+  VTY_NEWLINE, VTY_NEWLINE, VTY_NEWLINE, VTY_NEWLINE
+
+DEFUN (show_test,
+       show_test_cmd,
+       "show test",
+       SHOW_STR
+       "test\n")
+{
+  vty_out (vty, SHOW_TEST_STR);
+
+  return CMD_SUCCESS;
+}
+
 DEFUN (show_ip_route,
        show_ip_route_cmd,
        "show ip route",
@@ -5357,6 +5373,7 @@ zebra_vty_init (void)
   install_element (CONFIG_NODE, &no_ip_route_mask_flags_tag_distance2_cmd);
   install_element (CONFIG_NODE, &no_ip_route_mask_flags_tag_distance2_vrf_cmd);
 
+  install_element (VIEW_NODE, &show_test_cmd);
   install_element (VIEW_NODE, &show_ip_route_cmd);
   install_element (VIEW_NODE, &show_ip_route_tag_cmd);
   install_element (VIEW_NODE, &show_ip_route_tag_vrf_cmd);
